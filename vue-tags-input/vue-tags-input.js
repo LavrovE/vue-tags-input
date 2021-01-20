@@ -363,6 +363,7 @@ export default {
       this.performBlur(e);
     },
     performBlur() {
+      console.log('perform blur');
       // If we should add tags before blurring → add tag
       if (this.addOnBlur && this.focused) this.performAddTags(this.newTag);
 
