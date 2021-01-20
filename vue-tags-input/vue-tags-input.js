@@ -361,13 +361,16 @@ export default {
       if (this.$el.contains(e.target) || this.$el.contains(document.activeElement)) return;
       this.performBlur(e);
     },
-    performBlur(test) {
-      console.log(test, this.focused);
+    performBlur() {
       // If we should add tags before blurring → add tag
       if (this.addOnBlur && this.focused) this.performAddTags(this.newTag);
 
       // Hide autocomplete layer
       this.focused = false;
+    },
+    improvedBlur(event){
+      console.log(event);
+      this.$emit('blur', event);
     },
   },
   watch: {
