@@ -372,6 +372,7 @@ export default {
       this.focused = false;
     },
     improvedBlur(event){
+      this.blurredOnClick();
       console.log(2);
       console.log(event);
       // document.body.click();
