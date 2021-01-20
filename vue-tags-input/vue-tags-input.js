@@ -360,6 +360,7 @@ export default {
     blurredOnClick(e) {
       // if the click occurs on tagsinput → don't hide
       console.log('blurredonclick');
+      console.log(this.$el, this.$el.contains(e.target), this.$el.contains(document.activeElement));
       if (this.$el.contains(e.target) || this.$el.contains(document.activeElement)) return;
       this.performBlur(e);
     },
