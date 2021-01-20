@@ -139,7 +139,7 @@
             @keydown.38="selectItem($event, 'before')"
             @keydown.40="selectItem($event, 'after')"
             @input="updateNewTag"
-            @blur="performBlur(); $emit('blur', $event)"
+            @blur="$emit('blur', $event); performBlur()"
             @focus="focused = true; $emit('focus', $event)"
             @click="addOnlyFromAutocomplete ? false : selectedItem = null"
           >
