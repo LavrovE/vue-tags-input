@@ -199,6 +199,7 @@ export default {
     },
     // Method to call to add a tag
     performAddTags(tag, event, source) {
+      console.log(1);
       // If the input is disabled or the function was invoked by no trigger key → stop
       if (this.disabled || event && this.noTriggerKey(event, 'addOnKey')) return;
 
@@ -369,6 +370,7 @@ export default {
       this.focused = false;
     },
     improvedBlur(event){
+      console.log(2);
       console.log(event);
       // document.body.click();
       this.$emit('blur', event);
