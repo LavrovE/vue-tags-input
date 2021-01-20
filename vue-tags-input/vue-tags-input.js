@@ -369,8 +369,8 @@ export default {
       this.focused = false;
     },
     improvedBlur(event){
-      console.log(document.body);
-      document.body.click();
+      console.log(event);
+      // document.body.click();
       this.$emit('blur', event);
     },
   },
