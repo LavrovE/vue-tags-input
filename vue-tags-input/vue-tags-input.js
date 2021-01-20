@@ -359,6 +359,7 @@ export default {
     },
     blurredOnClick(e) {
       // if the click occurs on tagsinput → don't hide
+      console.log('blurredonclick');
       if (this.$el.contains(e.target) || this.$el.contains(document.activeElement)) return;
       this.performBlur(e);
     },
