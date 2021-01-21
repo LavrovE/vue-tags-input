@@ -31,7 +31,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             plugins: ['@babel/plugin-proposal-object-rest-spread'],
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env'],
           },
         },
       },

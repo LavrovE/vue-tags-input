@@ -27,9 +27,9 @@ export default {
     autocompleteOpen() {
       if (this.autocompleteAlwaysOpen) return true;
       return this.newTag !== null
-        && this.newTag.length >= this.autocompleteMinLength
-        && this.filteredAutocompleteItems.length > 0
-        && this.focused;
+          && this.newTag.length >= this.autocompleteMinLength
+          && this.filteredAutocompleteItems.length > 0
+          && this.focused;
     },
     // Returns validated autocomplete items. Maybe duplicates are filtered out
     filteredAutocompleteItems() {
@@ -92,8 +92,8 @@ export default {
        * @name before-editing-tag
        * @property {events} hook
        * @returns {Object} Contains the to editing tag: 'tag'.
-         The tag's index: 'index'. And a function: 'editTag'.
-         If the function is invoked, the tag toggles to it's edit mode.
+       The tag's index: 'index'. And a function: 'editTag'.
+       If the function is invoked, the tag toggles to it's edit mode.
        */
       this.$emit('before-editing-tag', {
         index,
@@ -163,7 +163,7 @@ export default {
        * @name before-deleting-tag
        * @property {events} hook
        * @returns {Object} Contains the to editing tag: 'tag'. The tag's index: 'index'
-         And a function: 'deleteTag'. If the function is invoked, the tag is deleted.
+       And a function: 'deleteTag'. If the function is invoked, the tag is deleted.
        */
       this.$emit('before-deleting-tag', {
         index,
@@ -193,13 +193,12 @@ export default {
     // Decides wether the input keyCode is one, which is allowed to modify/add tags
     noTriggerKey(event, category) {
       const triggerKey = this[category].indexOf(event.keyCode) !== -1
-        || this[category].indexOf(event.key) !== -1;
+          || this[category].indexOf(event.key) !== -1;
       if (triggerKey) event.preventDefault();
       return !triggerKey;
     },
     // Method to call to add a tag
     performAddTags(tag, event, source) {
-      console.log(1);
       // If the input is disabled or the function was invoked by no trigger key → stop
       if (this.disabled || event && this.noTriggerKey(event, 'addOnKey')) return;
 
@@ -220,7 +219,7 @@ export default {
          * @name before-adding-tag
          * @property {events} hook
          * @returns {Object} Contains the to editing tag: 'tag'. And a function: 'addTag'.
-           If the function is invoked, the tag is added.
+         If the function is invoked, the tag is added.
          */
         this.$emit('before-adding-tag', {
           tag,
@@ -247,7 +246,7 @@ export default {
 
         /**
          * @description Emits if the maximum, the tags array is allowed to hold, is reached.
-           The maximum can be defined by the prop 'max-tags'.
+         The maximum can be defined by the prop 'max-tags'.
          * @name max-tags-reached
          * @property {events}
          * @returns {Object} The 'tag' which could not be added because of the length limitation.
@@ -258,7 +257,7 @@ export default {
         const dup = this.avoidAddingDuplicates && !this.duplicateFilter(tag);
         /**
          * @description Emits if the user tries to add a duplicate to the tag's array
-           and adding duplicates is prevented by the prop 'avoid-adding-duplicates'
+         and adding duplicates is prevented by the prop 'avoid-adding-duplicates'
          * @name adding-duplicate
          * @property {events}
          */
@@ -297,8 +296,8 @@ export default {
        * @name before-saving-tag
        * @property {events} hook
        * @returns {Object} Contains the to editing tag: 'tag'.
-         The tag's index: 'index'. And a function: 'saveTag'.
-         If the function is invoked, the tag is saved.
+       The tag's index: 'index'. And a function: 'saveTag'.
+       If the function is invoked, the tag is saved.
        */
       this.$emit('before-saving-tag', {
         index,
@@ -317,7 +316,7 @@ export default {
 
         /**
          * @description Emits if the user tries to save a duplicate in the tag's array
-           and saving duplicates is prevented by the prop 'avoid-adding-duplicates'
+         and saving duplicates is prevented by the prop 'avoid-adding-duplicates'
          * @name saving-duplicate
          * @property {events}
          */
@@ -359,25 +358,15 @@ export default {
     },
     blurredOnClick(e) {
       // if the click occurs on tagsinput → don't hide
-      console.log('blurredonclick');
-      console.log(this.$el, this.$el.contains(e.target), this.$el.contains(document.activeElement));
       if (this.$el.contains(e.target) || this.$el.contains(document.activeElement)) return;
-      // this.performBlur();
+      this.performBlur(e);
     },
     performBlur() {
-      console.log('perform blur');
       // If we should add tags before blurring → add tag
       if (this.addOnBlur && this.focused) this.performAddTags(this.newTag);
 
       // Hide autocomplete layer
       this.focused = false;
-    },
-    improvedBlur(event){
-      this.blurredOnClick(event);
-      console.log(2);
-      console.log(event);
-      // document.body.click();
-      this.$emit('blur', event);
     },
   },
   watch: {
